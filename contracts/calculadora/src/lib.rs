@@ -10,14 +10,14 @@ pub struct Contract;
 #[contractimpl]
 impl Contract {
     
-    pub fn sumar(env: Env, a:i128, b:i128) -> i128 {
-      //Implementar función que sume dos números
-      return 30;
+    pub fn sumar(env: Env, a: i128, b: i128) -> i128 {
+        let suma = a + b;
+        env.storage().set(&RESULTADO, &suma);
+        suma
     }
 
     pub fn resultado_anterior(env: Env) -> i128 {
-           //Implementar función que retorne el valor anterior
-            return 30;
+        env.storage().get(&RESULTADO).unwrap_or(0)
     }
 }
 
